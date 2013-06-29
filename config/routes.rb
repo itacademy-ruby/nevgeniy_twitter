@@ -1,4 +1,18 @@
 NevgeniyTwitter::Application.routes.draw do
+  get "users" => 'users#index'
+
+  get "user/:id" => 'users#show'
+
+  get "users/create"
+
+  get "users/update"
+
+  get "users/edit"
+
+  get "users/show"
+
+  get "users/destroy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
