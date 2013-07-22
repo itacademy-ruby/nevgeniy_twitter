@@ -1,17 +1,20 @@
-NevgeniyTwitter::Application.routes.draw do
-  get "users" => 'users#index'
+RandaalexTwitter::Application.routes.draw do
+  resources :microposts
 
-  get "user/:id" => 'users#show'
+  get "about" => "static_pages#about"
+  get "help" => "static_pages#help"
 
-  get "users/create"
+  resources :users do
+    member do 
+     post "follow"
+    end
+  end
+  resources :sessions, :only => [:new, :create, :destroy]
 
-  get "users/update"
+  get "signin" => 'sessions#new'
+  post "signin" => 'sessions#create'
+  get "signout" => 'sessions#destroy'
 
-  get "users/edit"
-
-  get "users/show"
-
-  get "users/destroy"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -62,7 +65,7 @@ NevgeniyTwitter::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'static_pages#home'
 
   # See how all your routes lay out with "rake routes"
 

@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-NevgeniyTwitter::Application.load_tasks
+RandaalexTwitter::Application.load_tasks
